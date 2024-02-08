@@ -6,7 +6,7 @@ export function ButtonCounter(props) {
 
   return (
     <div>
-      <button className={`counter-button-${size}`} onClick={onClick}>
+      <button className={`counter-button--${size}`} onClick={onClick}>
         {label}
       </button>
     </div>
