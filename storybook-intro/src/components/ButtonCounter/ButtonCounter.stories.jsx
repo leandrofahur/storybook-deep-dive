@@ -6,6 +6,9 @@ export default {
   parameters: {
     layout: "centered",
   },
+  argTypes: {
+    backgroundColor: { control: "color" },
+  },
 };
 
 export const Large = {

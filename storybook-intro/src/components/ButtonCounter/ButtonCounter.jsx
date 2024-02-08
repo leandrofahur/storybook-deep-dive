@@ -2,11 +2,15 @@ import PropTypes from "prop-types";
 import "./buttonCounter.css";
 
 export function ButtonCounter(props) {
-  const { label, size, onClick } = props;
+  const { label, size, backgroundColor, onClick } = props;
 
   return (
     <div>
-      <button className={`counter-button--${size}`} onClick={onClick}>
+      <button
+        className={`counter-button--${size}`}
+        style={backgroundColor && { backgroundColor }}
+        onClick={onClick}
+      >
         {label}
       </button>
     </div>
@@ -15,6 +19,7 @@ export function ButtonCounter(props) {
 
 ButtonCounter.propTypes = {
   size: PropTypes.oneOf(["small", "medium", "large"]),
+  backgroundColor: PropTypes.any,
   label: PropTypes.string,
   onClick: PropTypes.func,
 };
