@@ -19,7 +19,7 @@ export const IncrementingByTwo = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole("button", { name: ButtonCounter });
-    await userEvent.click(button);
-    await userEvent.click(button);
+    await userEvent.click(button, { delay: 200 });
+    await userEvent.click(button, { delay: 200 });
   },
 };
