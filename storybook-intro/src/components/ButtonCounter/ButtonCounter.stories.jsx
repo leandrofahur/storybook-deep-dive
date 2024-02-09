@@ -24,6 +24,14 @@ export default {
       //   },
       // },
     },
+    size: {
+      description: "The size of the button can be:",
+      table: {
+        defaultValue: {
+          summary: "large",
+        },
+      },
+    },
   },
   tags: ["autodocs"],
 };
