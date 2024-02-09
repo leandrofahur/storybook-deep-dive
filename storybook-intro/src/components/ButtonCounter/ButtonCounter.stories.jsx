@@ -7,14 +7,38 @@ export default {
     layout: "centered",
   },
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: {
+      control: "color",
+      description: "The background color of the button in HEX #RRGGBB format",
+      table: {
+        defaultValue: {
+          summary: "#EFEFEF",
+        },
+      },
+    },
+    label: {
+      description: "The label of the button",
+      // table: {
+      //   defaultValue: {
+      //     summary: "Button",
+      //   },
+      // },
+    },
   },
+  tags: ["autodocs"],
 };
 
 export const Large = {
   args: {
     size: "large",
     label: "Button",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "This is the large button",
+      },
+    },
   },
 };
 
@@ -23,11 +47,25 @@ export const Medium = {
     size: "medium",
     label: "Button",
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "This is the medium button",
+      },
+    },
+  },
 };
 
 export const Small = {
   args: {
     size: "small",
     label: "Button",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "This is the small button",
+      },
+    },
   },
 };

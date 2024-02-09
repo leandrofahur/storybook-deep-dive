@@ -26,7 +26,8 @@ ButtonCounter.propTypes = {
 
 ButtonCounter.defaultProps = {
   size: "large",
-  label: "",
+  label: "Button",
+  backgroundColor: "#EFEFEF",
   onClick: () => {},
 };
 
