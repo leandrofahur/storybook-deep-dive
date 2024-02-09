@@ -19,11 +19,7 @@ export function ButtonCounter(props) {
 
 ButtonCounter.propTypes = {
   size: PropTypes.oneOf(["small", "medium", "large"]),
-  type: PropTypes.oneOf([
-    "counter-button1",
-    "counter-button2",
-    "counter-button3",
-  ]),
+  type: PropTypes.oneOf(["counter-button1", "counter-button2"]),
   backgroundColor: PropTypes.any,
   label: PropTypes.string,
   onClick: PropTypes.func,

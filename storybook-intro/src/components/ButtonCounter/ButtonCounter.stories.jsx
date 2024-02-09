@@ -16,6 +16,9 @@ export default {
         },
       },
     },
+    // argTypes: {
+
+    // },
     label: {
       description: "The label of the button",
       // table: {
@@ -42,6 +45,9 @@ export default {
     },
   },
   tags: ["autodocs"],
+  onclick: {
+    action: "clicked",
+  },
 };
 
 export const Large = {
