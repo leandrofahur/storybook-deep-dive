@@ -32,6 +32,14 @@ export default {
         },
       },
     },
+    type: {
+      description: "The type of the button can be:",
+      table: {
+        defaultValue: {
+          summary: "counter-button1",
+        },
+      },
+    },
   },
   tags: ["autodocs"],
 };
