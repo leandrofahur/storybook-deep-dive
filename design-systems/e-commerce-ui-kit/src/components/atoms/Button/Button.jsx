@@ -2,26 +2,33 @@ import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
 export default function Button(props) {
-  const { label, variant, size } = props;
+  const { variant, size, onClick, children } = props;
 
   return (
     <button
       type="button"
-      className={[styles[`button--${variant}`], styles[size]].join(" ")}
+      className={[
+        styles["button"],
+        styles[`button--${variant}`],
+        styles[size],
+      ].join(" ")}
+      onClick={onClick}
     >
-      {label}
+      {children}
     </button>
   );
 }
 
 Button.propTypes = {
-  label: PropTypes.string,
-  variant: PropTypes.oneOf(["contained", "outlined", "rounded"]),
+  variant: PropTypes.oneOf(["contained", "outlined"]),
   size: PropTypes.oneOf(["small", "medium", "large"]),
+  onClick: PropTypes.func,
+  children: PropTypes.node,
 };
 
 Button.defaultProps = {
-  label: "Button",
   variant: "contained",
-  size: "medium",
+  size: "small",
+  onClick: () => {},
+  children: null,
 };

@@ -1,4 +1,9 @@
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
   &--contained {
     border: none;
     background-color: #24a6f0;
@@ -15,6 +20,12 @@
     &:active {
       opacity: 1;
       transform: scale(0.9);
+    }
+
+    svg {
+      height: 16px;
+      width: 16px;
+      stroke-width: 0.7;
     }
   }
 
