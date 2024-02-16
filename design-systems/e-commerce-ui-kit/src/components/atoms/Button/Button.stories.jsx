@@ -1,3 +1,5 @@
+import { within, userEvent } from "@storybook/test";
+
 import Button from "./Button";
 import { VscSettings } from "react-icons/vsc";
 
@@ -35,6 +37,12 @@ Contained.args = {
   variant: "contained",
   size: "medium",
   children: <span>Button</span>,
+};
+Contained.play = async ({ canvasElement }) => {
+  const containedButton = within(canvasElement).getByRole("button");
+  await userEvent.hover(containedButton, { delay: 700 });
+  await userEvent.click(containedButton, { delay: 500 });
+  await userEvent.unhover(containedButton, { delay: 700 });
 };
 
 export const Outlined = Template.bind({});
