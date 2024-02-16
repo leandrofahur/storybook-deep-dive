@@ -1,19 +1,46 @@
 import Proptypes from "prop-types";
-import "./Task.module.css";
 
 export default function Task(props) {
   const { task, onArchiveTask, onPinTask } = props;
+  const { id, title, state } = task;
 
   return (
-    <div className="list-item">
-      <label htmlFor="title" aria-label={task.title}>
+    <div className={`list-item ${state}`}>
+      <label
+        htmlFor="checked"
+        aria-label={`archiveTask-${id}`}
+        className="checkbox"
+      >
+        <input
+          type="checkbox"
+          checked={state === "TASK_ARCHIVED"}
+          disabled={true}
+          name="checked"
+        />
+        <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
+      </label>
+
+      <label htmlFor="title" aria-label={title} className={title}>
         <input
           type="text"
-          value={task.title}
+          value={title}
           readOnly={true}
-          placeholder="title"
+          name="title"
+          placeholder="Input title"
         />
       </label>
+      {state !== "TASK_ARCHIVED" && (
+        <button
+          type="button"
+          aria-label={`pinTask-${id}`}
+          onClick={() => onPinTask(id)}
+          className="pin-button"
+          id={`pinTask-${id}`}
+          key={`pinTask-${id}`}
+        >
+          <span className="icon-star" />
+        </button>
+      )}
     </div>
   );
 }
