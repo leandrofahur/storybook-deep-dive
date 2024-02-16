@@ -12,31 +12,31 @@ export const Default = {
     tasks: [
       {
         id: "1",
-        title: "Test Task",
+        title: "Task 1",
         state: "TASK_INBOX",
         updatedAt: new Date(2018, 0, 1, 9, 0),
       },
       {
         id: "2",
-        title: "Another Test Task",
+        title: "Task 2",
         state: "TASK_INBOX",
         updatedAt: new Date(2018, 0, 1, 9, 0),
       },
       {
         id: "3",
-        title: "A Task",
+        title: "Task 3",
         state: "TASK_INBOX",
         updatedAt: new Date(2018, 0, 1, 9, 0),
       },
       {
         id: "4",
-        title: "Task",
+        title: "Task 4",
         state: "TASK_INBOX",
         updatedAt: new Date(2018, 0, 1, 9, 0),
       },
       {
         id: "5",
-        title: "Test",
+        title: "Task 5",
         state: "TASK_INBOX",
         updatedAt: new Date(2018, 0, 1, 9, 0),
       },
@@ -50,7 +50,7 @@ export const WithPinnedTasks = {
       ...Default.args.tasks.slice(0, 5),
       {
         id: "6",
-        title: "Test Task (pinned)",
+        title: "Task 6",
         state: "TASK_PINNED",
         updatedAt: new Date(2018, 0, 1, 9, 0),
       },

@@ -1,10 +1,37 @@
-import PropTypes from "prop-types";
 import Task from "../Task/Task";
 
-export default function TaskList(props) {
-  const { tasks, loading, onPinTask, onArchiveTask } = props;
+import { useDispatch, useSelector } from "react-redux";
+import { archiveTask, pinTask } from "../../states/tasksSlice";
 
-  // object derived of the Task component to be used in the TaskList component
+export default function TaskList() {
+  const tasks = useSelector((state) => {
+    // object derived of the Task component to be used in the TaskList component
+    // sort tasks by state
+    // pinned tasks first
+    // then the rest
+    const tasksInOrder = [
+      ...state.taskBox.tasks.filter((t) => t.state === "TASK_PINNED"),
+      ...state.taskBox.tasks.filter((t) => t.state !== "TASK_PINNED"),
+    ];
+    const filteredTasks = tasksInOrder.filter(
+      (t) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
+    );
+
+    return filteredTasks;
+  });
+
+  const dispatch = useDispatch();
+
+  const onPinTask = (id) => {
+    dispatch(pinTask(id));
+  };
+
+  const onArchiveTask = (id) => {
+    dispatch(archiveTask(id));
+  };
+
+  const { status } = useSelector((state) => state.taskBox.status);
+
   const events = {
     onPinTask,
     onArchiveTask,
@@ -21,7 +48,7 @@ export default function TaskList(props) {
     </div>
   );
 
-  if (loading) {
+  if (status === "loading") {
     return (
       <div className="list-items" key={"loading"} data-testid="loading">
         {LoadingRow}
@@ -46,26 +73,16 @@ export default function TaskList(props) {
     );
   }
 
-  // sort tasks by state
-  // pinned tasks first
-  // then the rest
-  const tasksInOrder = [
-    ...tasks.filter((t) => t.state === "TASK_PINNED"),
-    ...tasks.filter((t) => t.state !== "TASK_PINNED"),
-  ];
-
   return (
     <div className="list-items">
-      {tasksInOrder.map((task) => (
-        <Task key={task.id} task={task} {...events} />
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          task={task}
+          onPinTask={(id) => onPinTask(id)}
+          onArchiveTask={(id) => onArchiveTask(id)}
+        />
       ))}
     </div>
   );
 }
-
-TaskList.propTypes = {
-  loading: PropTypes.bool,
-  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
-  onPinTask: PropTypes.func,
-  onArchiveTask: PropTypes.func,
-};
