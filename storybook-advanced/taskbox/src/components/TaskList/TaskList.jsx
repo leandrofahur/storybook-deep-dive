@@ -1,7 +1,7 @@
 import Task from "../Task/Task";
 
 import { useDispatch, useSelector } from "react-redux";
-import { archiveTask, pinTask } from "../../states/tasksSlice";
+import { archiveTask, pinTask } from "../../states/store";
 
 export default function TaskList() {
   const tasks = useSelector((state) => {
@@ -10,8 +10,8 @@ export default function TaskList() {
     // pinned tasks first
     // then the rest
     const tasksInOrder = [
-      ...state.taskBox.tasks.filter((t) => t.state === "TASK_PINNED"),
-      ...state.taskBox.tasks.filter((t) => t.state !== "TASK_PINNED"),
+      ...state.tasks.filter((t) => t.state === "TASK_PINNED"),
+      ...state.tasks.filter((t) => t.state !== "TASK_PINNED"),
     ];
     const filteredTasks = tasksInOrder.filter(
       (t) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
@@ -30,12 +30,7 @@ export default function TaskList() {
     dispatch(archiveTask(id));
   };
 
-  const { status } = useSelector((state) => state.taskBox.status);
-
-  const events = {
-    onPinTask,
-    onArchiveTask,
-  };
+  const status = useSelector((state) => state.status);
 
   const LoadingRow = (
     <div className="loading-item">

@@ -19,13 +19,13 @@ const tasksSlice = createSlice({
   initialState: TaskBoxData,
   reducers: {
     pinTask(state, action) {
-      const task = state.find((t) => t.id === action.payload);
+      const task = state.tasks.find((t) => t.id === action.payload);
       if (task) {
         task.state = "TASK_PINNED";
       }
     },
     archiveTask(state, action) {
-      const task = state.find((t) => t.id === action.payload);
+      const task = state.tasks.find((t) => t.id === action.payload);
       if (task) {
         task.state = "TASK_ARCHIVED";
       }
