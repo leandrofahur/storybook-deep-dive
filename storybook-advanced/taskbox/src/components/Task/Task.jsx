@@ -17,7 +17,14 @@ export default function Task(props) {
           disabled={true}
           name="checked"
         />
-        <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
+        <span
+          className="checkbox-custom"
+          onClick={() =>
+            state === "TASK_INBOX" || state === "TASK_PINNED"
+              ? onArchiveTask(id)
+              : null
+          }
+        />
       </label>
 
       <label htmlFor="title" aria-label={title} className={title}>
