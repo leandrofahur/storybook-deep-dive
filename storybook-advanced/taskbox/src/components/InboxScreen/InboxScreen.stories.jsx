@@ -20,7 +20,7 @@ export const Default = {
         rest.get(
           "https://jsonplaceholder.typicode.com/todos?userId=1",
           (req, res, ctx) => {
-            return res(ctx.json(MockedState));
+            return res(ctx.json(MockedState.tasks));
           }
         ),
       ],
@@ -35,7 +35,7 @@ export const Error = {
         rest.get(
           "https://jsonplaceholder.typicode.com/todos?userId=1",
           (req, res, ctx) => {
-            return res(ctx.status(500));
+            return res(ctx.status(403));
           }
         ),
       ],
