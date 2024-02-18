@@ -6,6 +6,13 @@ import store from "../../states/store";
 import { rest } from "msw";
 import { MockedState } from "../TaskList/TaskList.stories";
 
+import {
+  fireEvent,
+  within,
+  waitFor,
+  waitForElementToBeRemoved,
+} from "@storybook/test";
+
 export default {
   title: "InboxScreen",
   component: InboxScreen,
@@ -25,6 +32,14 @@ export const Default = {
         ),
       ],
     },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await waitForElementToBeRemoved(await canvas.findByTestId("loading"));
+    await waitFor(async () => {
+      await fireEvent.click(canvas.getByLabelText("pinTask-1"));
+      await fireEvent.click(canvas.getByLabelText("pinTask-2"));
+    });
   },
 };
 
