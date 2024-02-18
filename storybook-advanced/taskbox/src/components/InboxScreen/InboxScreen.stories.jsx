@@ -27,4 +27,18 @@ export const Default = {
     },
   },
 };
-export const Error = {};
+
+export const Error = {
+  parameters: {
+    msw: {
+      handlers: [
+        rest.get(
+          "https://jsonplaceholder.typicode.com/todos?userId=1",
+          (req, res, ctx) => {
+            return res(ctx.status(500));
+          }
+        ),
+      ],
+    },
+  },
+};
